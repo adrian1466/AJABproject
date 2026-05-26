@@ -16,9 +16,12 @@
             align-items: stretch;
             padding: 28px;
             border-radius: 18px;
-            background: #0b3b37;
+            background:
+                linear-gradient(135deg, rgba(3, 15, 36, 0.98), rgba(11, 42, 91, 0.95)),
+                radial-gradient(circle at top right, rgba(56, 189, 248, 0.32), transparent 34%);
             color: #ffffff;
-            box-shadow: 0 20px 46px rgba(11, 59, 55, 0.20);
+            border: 1px solid rgba(147, 197, 253, 0.22);
+            box-shadow: 0 22px 54px rgba(2, 8, 23, 0.26);
         }
 
         .student-hero h1,
@@ -34,12 +37,12 @@
         .student-hero p {
             max-width: 650px;
             margin: 0;
-            color: #d8f3ed;
+            color: #bfdbfe;
         }
 
         .student-eyebrow,
         .student-panel-heading span {
-            color: #99f6e4;
+            color: #38bdf8;
             font-size: 12px;
             font-weight: 900;
             text-transform: uppercase;
@@ -51,13 +54,13 @@
             gap: 8px;
             padding: 18px;
             border-radius: 14px;
-            background: rgba(255, 255, 255, 0.10);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(147, 197, 253, 0.22);
         }
 
         .student-status-card i {
             font-size: 30px;
-            color: #99f6e4;
+            color: #38bdf8;
         }
 
         .student-status-card strong {
@@ -66,7 +69,7 @@
         }
 
         .student-status-card span {
-            color: #d1fae5;
+            color: #bfdbfe;
             font-weight: 800;
         }
 
@@ -79,10 +82,10 @@
 
         .student-panel,
         .student-note-panel {
-            border: 1px solid #d7e5e2;
+            border: 1px solid #c7d7ee;
             border-radius: 16px;
-            background: #ffffff;
-            box-shadow: 0 12px 30px rgba(23, 32, 51, 0.08);
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
             padding: 22px;
         }
 
@@ -91,12 +94,12 @@
         }
 
         .student-panel-heading span {
-            color: #0f766e;
+            color: #1d4ed8;
         }
 
         .student-panel-heading h2 {
             margin: 5px 0 0;
-            color: #172033;
+            color: #06142d;
             font-size: 22px;
         }
 
@@ -114,8 +117,8 @@
             min-height: 98px;
             padding: 16px;
             border-radius: 14px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
         }
 
         .student-detail i,
@@ -127,8 +130,8 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: #ccfbf1;
-            color: #0f766e;
+            background: #dbeafe;
+            color: #0b2a5b;
             font-size: 20px;
         }
 
@@ -143,24 +146,24 @@
         .student-detail strong {
             display: block;
             margin-top: 4px;
-            color: #172033;
+            color: #06142d;
             word-break: break-word;
         }
 
         .student-note-panel {
             display: grid;
             gap: 12px;
-            background: #f0fdfa;
+            background: #eef6ff;
         }
 
         .student-note-panel h2 {
             margin: 0;
-            color: #0b3b37;
+            color: #06142d;
         }
 
         .student-note-panel p {
             margin: 0;
-            color: #3f5f5b;
+            color: #52657d;
         }
 
         .student-empty {
@@ -169,8 +172,8 @@
             align-items: center;
             padding: 18px;
             border-radius: 14px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
         }
 
         .student-empty p {

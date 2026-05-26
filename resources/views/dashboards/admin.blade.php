@@ -20,9 +20,12 @@
             align-items: stretch;
             padding: 28px;
             border-radius: 18px;
-            background: #0f1f3a;
+            background:
+                linear-gradient(135deg, rgba(3, 15, 36, 0.98), rgba(11, 42, 91, 0.95)),
+                radial-gradient(circle at top right, rgba(56, 189, 248, 0.35), transparent 34%);
             color: #ffffff;
-            box-shadow: 0 20px 46px rgba(15, 31, 58, 0.20);
+            border: 1px solid rgba(147, 197, 253, 0.22);
+            box-shadow: 0 22px 54px rgba(2, 8, 23, 0.26);
         }
 
         .admin-command-hero h1,
@@ -38,14 +41,14 @@
         .admin-command-hero p {
             max-width: 680px;
             margin: 0;
-            color: #d8e4f6;
+            color: #bfdbfe;
         }
 
         .dash-eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #93c5fd;
+            color: #38bdf8;
             font-size: 12px;
             font-weight: 900;
             text-transform: uppercase;
@@ -57,13 +60,13 @@
             gap: 8px;
             padding: 18px;
             border-radius: 14px;
-            background: rgba(255, 255, 255, 0.10);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(147, 197, 253, 0.22);
         }
 
         .admin-date-card i {
             font-size: 28px;
-            color: #93c5fd;
+            color: #38bdf8;
         }
 
         .admin-date-card strong {
@@ -85,10 +88,10 @@
         .admin-metric,
         .admin-work-panel,
         .admin-side-panel {
-            border: 1px solid #d8e0ea;
+            border: 1px solid #c7d7ee;
             border-radius: 16px;
-            background: #ffffff;
-            box-shadow: 0 12px 30px rgba(23, 32, 51, 0.08);
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
         }
 
         .admin-metric {
@@ -107,8 +110,8 @@
             width: 48px;
             height: 48px;
             border-radius: 13px;
-            background: #e8f1ff;
-            color: #2563eb;
+            background: #dbeafe;
+            color: #0b2a5b;
             font-size: 22px;
         }
 
@@ -123,7 +126,7 @@
         .admin-metric strong {
             display: block;
             margin-top: 4px;
-            color: #172033;
+            color: #06142d;
             font-size: 30px;
             line-height: 1;
         }
@@ -145,7 +148,7 @@
         }
 
         .panel-heading span {
-            color: #2563eb;
+            color: #1d4ed8;
             font-size: 12px;
             font-weight: 900;
             text-transform: uppercase;
@@ -153,7 +156,7 @@
 
         .panel-heading h2 {
             margin: 5px 0 0;
-            color: #172033;
+            color: #06142d;
             font-size: 22px;
         }
 
@@ -171,19 +174,21 @@
             min-height: 112px;
             padding: 16px;
             border-radius: 14px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            color: #172033;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
+            color: #06142d;
             text-decoration: none;
+            transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
         }
 
         .admin-action:hover {
-            border-color: #93c5fd;
-            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.12);
+            transform: translateY(-2px);
+            border-color: #60a5fa;
+            box-shadow: 0 16px 28px rgba(29, 78, 216, 0.14);
         }
 
         .admin-action strong {
-            color: #172033;
+            color: #06142d;
             font-size: 16px;
         }
 
@@ -206,14 +211,14 @@
             align-items: flex-start;
             padding: 12px;
             border-radius: 12px;
-            background: #f8fafc;
+            background: #eef6ff;
             color: #334155;
             font-weight: 800;
             line-height: 1.4;
         }
 
         .system-list i {
-            color: #16a34a;
+            color: #1d4ed8;
             margin-top: 2px;
         }
 

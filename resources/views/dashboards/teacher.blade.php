@@ -16,9 +16,12 @@
             align-items: stretch;
             padding: 28px;
             border-radius: 18px;
-            background: #3a245f;
+            background:
+                linear-gradient(135deg, rgba(3, 15, 36, 0.98), rgba(11, 42, 91, 0.95)),
+                radial-gradient(circle at top right, rgba(56, 189, 248, 0.32), transparent 34%);
             color: #ffffff;
-            box-shadow: 0 20px 46px rgba(58, 36, 95, 0.20);
+            border: 1px solid rgba(147, 197, 253, 0.22);
+            box-shadow: 0 22px 54px rgba(2, 8, 23, 0.26);
         }
 
         .teacher-hero h1,
@@ -34,12 +37,12 @@
         .teacher-hero p {
             max-width: 650px;
             margin: 0;
-            color: #ede9fe;
+            color: #bfdbfe;
         }
 
         .teacher-eyebrow,
         .teacher-panel-heading span {
-            color: #ddd6fe;
+            color: #38bdf8;
             font-size: 12px;
             font-weight: 900;
             text-transform: uppercase;
@@ -51,12 +54,12 @@
             gap: 8px;
             padding: 18px;
             border-radius: 14px;
-            background: rgba(255, 255, 255, 0.10);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(147, 197, 253, 0.22);
         }
 
         .teacher-badge i {
-            color: #ddd6fe;
+            color: #38bdf8;
             font-size: 30px;
         }
 
@@ -66,7 +69,7 @@
         }
 
         .teacher-badge span {
-            color: #ede9fe;
+            color: #bfdbfe;
             font-weight: 800;
         }
 
@@ -79,10 +82,10 @@
 
         .teacher-panel,
         .teacher-ready-panel {
-            border: 1px solid #ded8ea;
+            border: 1px solid #c7d7ee;
             border-radius: 16px;
-            background: #ffffff;
-            box-shadow: 0 12px 30px rgba(23, 32, 51, 0.08);
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
             padding: 22px;
         }
 
@@ -91,12 +94,12 @@
         }
 
         .teacher-panel-heading span {
-            color: #7c3aed;
+            color: #1d4ed8;
         }
 
         .teacher-panel-heading h2 {
             margin: 5px 0 0;
-            color: #172033;
+            color: #06142d;
             font-size: 22px;
         }
 
@@ -117,8 +120,8 @@
             gap: 8px;
             padding: 16px;
             border-radius: 14px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
         }
 
         .teacher-status i,
@@ -129,8 +132,8 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: #ede9fe;
-            color: #7c3aed;
+            background: #dbeafe;
+            color: #0b2a5b;
             font-size: 20px;
         }
 
@@ -142,24 +145,24 @@
         }
 
         .teacher-status strong {
-            color: #172033;
+            color: #06142d;
             font-size: 17px;
         }
 
         .teacher-ready-panel {
             display: grid;
             gap: 12px;
-            background: #faf5ff;
+            background: #eef6ff;
         }
 
         .teacher-ready-panel h2 {
             margin: 0;
-            color: #3a245f;
+            color: #06142d;
         }
 
         .teacher-ready-panel p {
             margin: 0;
-            color: #5f5279;
+            color: #52657d;
         }
 
         @media (max-width: 900px) {

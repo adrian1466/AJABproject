@@ -3334,6 +3334,52 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Dark blue portal refresh */
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34%),
+                linear-gradient(180deg, #06142d 0%, #071b3f 44%, #eef4fb 44%, #f8fafc 100%) !important;
+            color: #102033 !important;
+        }
+
+        nav {
+            background: #06142d !important;
+            border-bottom: 1px solid rgba(147, 197, 253, 0.18) !important;
+            box-shadow: 0 14px 34px rgba(6, 20, 45, 0.28) !important;
+        }
+
+        .nav-brand {
+            min-height: 38px;
+            padding: 0 12px;
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.18);
+            border: 1px solid rgba(147, 197, 253, 0.22);
+        }
+
+        nav a,
+        nav button {
+            color: #dbeafe !important;
+            border-radius: 10px !important;
+        }
+
+        nav a:hover,
+        nav button:hover {
+            background: rgba(59, 130, 246, 0.22) !important;
+            color: #ffffff !important;
+        }
+
+        .container {
+            max-width: 1160px;
+        }
+
+        .btn-primary {
+            background: #1d4ed8 !important;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af !important;
+        }
     </style>
 </head>
 <body>
