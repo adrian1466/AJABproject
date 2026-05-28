@@ -1,215 +1,222 @@
 @extends('layouts.app')
 
-@section('title', 'Teacher Dashboard')
+@section('title', 'Teacher Dashboard | BDC')
 
 @section('content')
     <style>
-        .teacher-dashboard {
+        .teacher-board {
             display: grid;
             gap: 18px;
         }
 
-        .teacher-hero {
+        .teacher-head {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 260px;
+            grid-template-columns: minmax(0, 1fr) 270px;
             gap: 18px;
             align-items: stretch;
-            padding: 28px;
-            border-radius: 18px;
+            padding: clamp(24px, 4vw, 38px);
+            border-radius: 8px;
             background:
-                linear-gradient(135deg, rgba(3, 15, 36, 0.98), rgba(11, 42, 91, 0.95)),
-                radial-gradient(circle at top right, rgba(56, 189, 248, 0.32), transparent 34%);
-            color: #ffffff;
-            border: 1px solid rgba(147, 197, 253, 0.22);
-            box-shadow: 0 22px 54px rgba(2, 8, 23, 0.26);
-        }
-
-        .teacher-hero h1,
-        .teacher-hero p {
+                linear-gradient(105deg, rgba(16, 58, 83, 0.94), rgba(31, 157, 138, 0.82)),
+                url("https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1500&q=80") center/cover;
             color: #ffffff;
         }
 
-        .teacher-hero h1 {
+        .teacher-head h1 {
             margin: 8px 0 10px;
-            font-size: 38px;
+            color: #ffffff !important;
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1;
         }
 
-        .teacher-hero p {
+        .teacher-head p {
             max-width: 650px;
             margin: 0;
-            color: #bfdbfe;
+            color: rgba(255, 255, 255, 0.88) !important;
         }
 
-        .teacher-eyebrow,
-        .teacher-panel-heading span {
-            color: #38bdf8;
+        .teacher-label,
+        .teacher-section span,
+        .teacher-card span {
             font-size: 12px;
-            font-weight: 900;
+            font-weight: 950;
             text-transform: uppercase;
         }
 
-        .teacher-badge {
-            display: grid;
-            align-content: center;
+        .teacher-label {
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
-            padding: 18px;
-            border-radius: 14px;
-            background: rgba(15, 23, 42, 0.45);
-            border: 1px solid rgba(147, 197, 253, 0.22);
+            color: #ffdc8a !important;
         }
 
-        .teacher-badge i {
-            color: #38bdf8;
+        .teacher-pass {
+            display: grid;
+            align-content: center;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+        }
+
+        .teacher-pass i {
+            color: #ffdc8a;
             font-size: 30px;
         }
 
-        .teacher-badge strong {
+        .teacher-pass strong {
             color: #ffffff;
-            font-size: 20px;
+            font-size: 22px;
         }
 
-        .teacher-badge span {
-            color: #bfdbfe;
-            font-weight: 800;
+        .teacher-pass span {
+            color: rgba(255, 255, 255, 0.86);
+            font-weight: 850;
         }
 
-        .teacher-main-grid {
+        .teacher-work {
             display: grid;
             grid-template-columns: minmax(0, 1fr) 320px;
-            gap: 16px;
+            gap: 18px;
             align-items: start;
         }
 
         .teacher-panel,
-        .teacher-ready-panel {
-            border: 1px solid #c7d7ee;
-            border-radius: 16px;
-            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
-            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
+        .teacher-side {
             padding: 22px;
+            border: 1px solid #d8e0ea;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 16px 34px rgba(24, 32, 47, 0.09);
         }
 
-        .teacher-panel-heading {
+        .teacher-section {
             margin-bottom: 16px;
         }
 
-        .teacher-panel-heading span {
-            color: #1d4ed8;
+        .teacher-section span {
+            color: #1b4d89 !important;
         }
 
-        .teacher-panel-heading h2 {
+        .teacher-section h2 {
             margin: 5px 0 0;
-            color: #06142d;
-            font-size: 22px;
+            color: #18202f !important;
         }
 
-        .teacher-panel p {
-            margin-top: 0;
-            color: #52657d;
+        .teacher-panel p,
+        .teacher-side p {
+            color: #647084 !important;
         }
 
-        .teacher-status-grid {
+        .teacher-cards {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 12px;
             margin-top: 18px;
         }
 
-        .teacher-status {
+        .teacher-card {
             display: grid;
-            gap: 8px;
+            gap: 9px;
+            min-height: 136px;
             padding: 16px;
-            border-radius: 14px;
-            background: #f8fbff;
-            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            background: #f8fbfc;
+            border: 1px solid #d8e0ea;
+            border-top: 5px solid #1b4d89;
         }
 
-        .teacher-status i,
-        .teacher-ready-panel > i {
+        .teacher-card:nth-child(2) {
+            border-top-color: #1f9d8a;
+        }
+
+        .teacher-card:nth-child(3) {
+            border-top-color: #f2b84b;
+        }
+
+        .teacher-card i,
+        .teacher-side > i {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 44px;
             height: 44px;
-            border-radius: 12px;
-            background: #dbeafe;
-            color: #0b2a5b;
+            border-radius: 8px;
+            background: #eef6f4;
+            color: #1f9d8a;
             font-size: 20px;
         }
 
-        .teacher-status span {
-            color: #64748b;
-            font-size: 12px;
-            font-weight: 900;
-            text-transform: uppercase;
+        .teacher-card span {
+            color: #647084;
         }
 
-        .teacher-status strong {
-            color: #06142d;
+        .teacher-card strong {
+            color: #18202f;
             font-size: 17px;
         }
 
-        .teacher-ready-panel {
+        .teacher-side {
             display: grid;
             gap: 12px;
-            background: #eef6ff;
+            background: #f8fbfc;
         }
 
-        .teacher-ready-panel h2 {
+        .teacher-side h2 {
             margin: 0;
-            color: #06142d;
+            color: #18202f !important;
         }
 
-        .teacher-ready-panel p {
+        .teacher-side p {
             margin: 0;
-            color: #52657d;
         }
 
         @media (max-width: 900px) {
-            .teacher-hero,
-            .teacher-main-grid,
-            .teacher-status-grid {
+            .teacher-head,
+            .teacher-work,
+            .teacher-cards {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 
-    <section class="teacher-dashboard">
-        <header class="teacher-hero">
+    <section class="teacher-board">
+        <header class="teacher-head">
             <div>
-                <span class="teacher-eyebrow"><i class="bi bi-person-video3"></i> Teacher Workspace</span>
-                <h1>Teaching Dashboard</h1>
-                <p>Your teacher session is active and protected by role-based access.</p>
+                <span class="teacher-label"><i class="bi bi-person-video3"></i>BDC Teacher</span>
+                <h1>Classroom Workspace</h1>
+                <p>Your teacher session is active and connected to the protected BDC portal.</p>
             </div>
 
-            <aside class="teacher-badge">
+            <aside class="teacher-pass">
                 <i class="bi bi-person-badge-fill"></i>
                 <strong>Teacher</strong>
                 <span>Session Active</span>
             </aside>
         </header>
 
-        <div class="teacher-main-grid">
+        <div class="teacher-work">
             <section class="teacher-panel">
-                <div class="teacher-panel-heading">
-                    <span>Account Overview</span>
+                <div class="teacher-section">
+                    <span>Overview</span>
                     <h2>Teacher Status</h2>
                 </div>
 
-                <p>You are viewing the teacher dashboard. Admin and student pages remain protected by session and role middleware.</p>
+                <p>This page confirms your teacher access. Admin and student pages remain separated by session and role middleware.</p>
 
-                <div class="teacher-status-grid">
-                    <div class="teacher-status">
+                <div class="teacher-cards">
+                    <div class="teacher-card">
                         <i class="bi bi-key-fill"></i>
                         <span>Access Level</span>
                         <strong>Teacher</strong>
                     </div>
-                    <div class="teacher-status">
+                    <div class="teacher-card">
                         <i class="bi bi-wifi"></i>
                         <span>Session</span>
                         <strong>Active</strong>
                     </div>
-                    <div class="teacher-status">
+                    <div class="teacher-card">
                         <i class="bi bi-lock-fill"></i>
                         <span>Protection</span>
                         <strong>Enabled</strong>
@@ -217,10 +224,10 @@
                 </div>
             </section>
 
-            <aside class="teacher-ready-panel">
+            <aside class="teacher-side">
                 <i class="bi bi-check2-circle"></i>
                 <h2>Ready</h2>
-                <p>Your teacher account is verified and available for protected teacher pages.</p>
+                <p>Your BDC teacher account is verified for protected teacher pages.</p>
             </aside>
         </div>
     </section>
