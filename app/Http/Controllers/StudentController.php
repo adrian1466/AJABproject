@@ -16,8 +16,9 @@ class StudentController extends Controller
     public function index()
     {
         $degrees = Degree::all();
+        $students = Student::with('degree')->latest()->paginate(8);
 
-        return view('students.index', compact('degrees'));
+        return view('students.index', compact('degrees', 'students'));
     }
 
     public function ajaxIndex()

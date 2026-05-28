@@ -23,7 +23,7 @@
     <section class="ajax-card">
         <h2 id="formTitle">Add Student</h2>
 
-        <form id="studentForm">
+        <form id="studentForm" action="{{ route('students.store') }}" method="POST">
             @csrf
             <input type="hidden" id="studentRecordId" name="id">
 
@@ -117,15 +117,50 @@
                     </tr>
                 </thead>
                 <tbody id="studentsTableBody">
-                    <tr>
-                        <td colspan="8" class="loading-row">Loading student records...</td>
-                    </tr>
+                    @forelse($students as $student)
+                        <tr data-id="{{ $student->id }}">
+                            <td>{{ $student->id }}</td>
+                            <td>{{ $student->student_id }}</td>
+                            <td>{{ $student->first_name }}</td>
+                            <td>{{ $student->last_name }}</td>
+                            <td>{{ $student->degree->degree_title ?? 'No Degree' }}</td>
+                            <td>{{ $student->email }}</td>
+                            <td>{{ $student->contact_number }}</td>
+                            <td>
+                                <div class="actions">
+                                    <a class="btn btn-warning" href="{{ route('students.edit', $student) }}">
+                                        <i class="bi bi-pencil-square"></i>Edit
+                                    </a>
+                                    <form action="{{ route('students.destroy', $student) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this student?')" style="margin:0;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="8" class="loading-row">No student records found.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
         <div class="table-footer">
-            <span id="studentTableSummary">Loading records...</span>
+            <span id="studentTableSummary">
+                @if($students->total())
+                    Showing {{ $students->firstItem() }} to {{ $students->lastItem() }} of {{ $students->total() }} records
+                @else
+                    No records to show
+                @endif
+            </span>
             <div id="studentPagination" class="pagination-controls"></div>
         </div>
+        <noscript>
+            {{ $students->links() }}
+        </noscript>
     </section>
 @endsection

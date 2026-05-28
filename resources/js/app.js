@@ -17,6 +17,7 @@ $(function () {
     let lastSyncValue = null;
     let currentPage = 1;
     let lastPagination = null;
+    let hasLoadedStudents = false;
 
     $.ajaxSetup({
         headers: {
@@ -138,14 +139,23 @@ $(function () {
 
         currentPage = page;
         const colSpan = canManageStudents ? 8 : 7;
-        $tableBody.html(`<tr><td colspan="${colSpan}" class="loading-row">Loading student records...</td></tr>`);
+        if (hasLoadedStudents || page !== 1 || ($search.val() || '').length) {
+            $tableBody.html(`<tr><td colspan="${colSpan}" class="loading-row">Loading student records...</td></tr>`);
+        }
 
-        $.get('/students/ajax/list', {
-            search: $search.val() || '',
-            page,
-            per_page: 8,
+        $.ajax({
+            url: '/students/ajax/list',
+            method: 'GET',
+            data: {
+                search: $search.val() || '',
+                page,
+                per_page: 8,
+            },
+            timeout: 10000,
         })
             .done(function (response) {
+                hasLoadedStudents = true;
+
                 if (!response.students.length) {
                     $tableBody.html(`<tr><td colspan="${colSpan}" class="loading-row">No student records found.</td></tr>`);
                     renderPagination(response.pagination);
@@ -155,8 +165,14 @@ $(function () {
                 $tableBody.html(response.students.map(studentRow).join(''));
                 renderPagination(response.pagination);
             })
-            .fail(function () {
-                $tableBody.html(`<tr><td colspan="${colSpan}" class="loading-row">Unable to load student records.</td></tr>`);
+            .fail(function (xhr) {
+                if (!hasLoadedStudents) {
+                    $summary.text('Showing server-rendered records. Live refresh is unavailable.');
+                    return;
+                }
+
+                const status = xhr.status ? ` (${xhr.status})` : '';
+                $tableBody.html(`<tr><td colspan="${colSpan}" class="loading-row">Unable to load student records${status}.</td></tr>`);
             });
     }
 
