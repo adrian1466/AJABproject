@@ -118,7 +118,7 @@
                 </thead>
                 <tbody id="studentsTableBody">
                     <tr>
-                        <td colspan="8" class="loading-row">Loading students...</td>
+                        <td colspan="8" class="loading-row">Loading student records...</td>
                     </tr>
                 </tbody>
             </table>

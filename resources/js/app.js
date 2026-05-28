@@ -1,6 +1,9 @@
 import './bootstrap';
+import $ from 'jquery';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+
+window.$ = window.jQuery = $;
 
 $(function () {
     const $tableBody = $('#studentsTableBody');
