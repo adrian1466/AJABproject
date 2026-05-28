@@ -131,9 +131,8 @@
                                     <a class="btn btn-warning" href="{{ route('students.edit', $student) }}">
                                         <i class="bi bi-pencil-square"></i>Edit
                                     </a>
-                                    <form action="{{ route('students.destroy', $student) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this student?')" style="margin:0;">
+                                    <form action="{{ route('students.delete', $student) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this student?')" style="margin:0;">
                                         @csrf
-                                        @method('DELETE')
                                         <button type="submit" class="btn btn-danger">
                                             <i class="bi bi-trash"></i>Delete
                                         </button>

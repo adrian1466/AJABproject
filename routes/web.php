@@ -39,6 +39,9 @@ Route::middleware('auth.session')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
         Route::resource('degrees', DegreeController::class);
+        Route::post('/students/{student}/delete', [StudentController::class, 'destroy'])
+            ->middleware('maintenance')
+            ->name('students.delete');
         Route::resource('students', StudentController::class)->middleware('maintenance');
         Route::resource('teachers', TeacherController::class)->only(['index', 'create', 'store']);
     });

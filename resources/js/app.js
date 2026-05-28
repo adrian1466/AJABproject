@@ -344,11 +344,8 @@ $(function () {
             clearMessage();
 
             $.ajax({
-                url: `/students/${id}`,
+                url: `/students/${id}/delete`,
                 method: 'POST',
-                data: {
-                    _method: 'DELETE',
-                },
             })
                 .done(function (response) {
                     showMessage('success', response.message);
