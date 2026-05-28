@@ -234,9 +234,9 @@
     <section class="admin-board">
         <header class="admin-head">
             <div>
-                <span class="admin-kicker-new"><i class="bi bi-shield-lock-fill"></i>AJAB Admin</span>
-                <h1>Control Center</h1>
-                <p>Manage accounts, student records, teacher access, and degree data from a cleaner AJAB workspace.</p>
+                <span class="admin-kicker-new"><i class="bi bi-shield-lock-fill"></i>Admin Workspace</span>
+                <h1>School Records Dashboard</h1>
+                <p>Manage students, teachers, degrees, and role-based access from one clean workspace.</p>
             </div>
 
             <aside class="admin-date">
@@ -264,26 +264,26 @@
         <div class="admin-work">
             <section class="admin-panel-clean">
                 <div class="admin-section-title">
-                    <span>Actions</span>
-                    <h2>AJAB Management</h2>
+                    <span>Quick Actions</span>
+                    <h2>Manage Records</h2>
                 </div>
 
                 <div class="admin-links">
                     <a class="admin-link" href="/students/create">
                         <i class="bi bi-person-plus-fill"></i>
-                        <div><strong>Add Student</strong><span>Create a new student record and login access.</span></div>
+                        <div><strong>Add Student</strong><span>Create student record and login access.</span></div>
                     </a>
                     <a class="admin-link" href="{{ route('teachers.create') }}">
                         <i class="bi bi-person-fill-add"></i>
-                        <div><strong>Add Teacher</strong><span>Create a teacher account for AJAB access.</span></div>
+                        <div><strong>Add Teacher</strong><span>Create a teacher account.</span></div>
                     </a>
                     <a class="admin-link" href="/students">
                         <i class="bi bi-table"></i>
-                        <div><strong>Student List</strong><span>Review, edit, and manage student profiles.</span></div>
+                        <div><strong>Student List</strong><span>Review, update, and manage student data.</span></div>
                     </a>
                     <a class="admin-link" href="{{ route('teachers.index') }}">
                         <i class="bi bi-journal-bookmark-fill"></i>
-                        <div><strong>Teacher List</strong><span>View all teacher accounts in the portal.</span></div>
+                        <div><strong>Teacher List</strong><span>View all teacher accounts.</span></div>
                     </a>
                 </div>
             </section>
@@ -295,9 +295,9 @@
                 </div>
 
                 <div class="admin-checks">
-                    <div><i class="bi bi-check-circle-fill"></i>Admin routes are protected by role access.</div>
-                    <div><i class="bi bi-check-circle-fill"></i>Student list and AJAX records are available.</div>
-                    <div><i class="bi bi-check-circle-fill"></i>Teacher and student dashboards are ready.</div>
+                    <div><i class="bi bi-check-circle-fill"></i>Admin routes are role protected</div>
+                    <div><i class="bi bi-check-circle-fill"></i>Student AJAX list route is active</div>
+                    <div><i class="bi bi-check-circle-fill"></i>Teacher and student dashboards are available</div>
                 </div>
             </aside>
         </div>
