@@ -23,7 +23,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 
 ENV APP_ENV=production \
-    APP_DEBUG=false
+    APP_DEBUG=false \
+    CACHE_STORE=file
 
 COPY . .
 
@@ -35,4 +36,4 @@ RUN chmod -R 777 storage bootstrap/cache database
 
 EXPOSE 10000
 
-CMD chmod -R 777 storage bootstrap/cache database && php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
+CMD export CACHE_STORE=file && chmod -R 777 storage bootstrap/cache database && php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
