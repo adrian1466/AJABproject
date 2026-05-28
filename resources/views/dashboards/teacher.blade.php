@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Teacher Dashboard | BDC')
+@section('title', 'Teacher Dashboard | AJAB')
 
 @section('content')
     <style>
@@ -184,9 +184,9 @@
     <section class="teacher-board">
         <header class="teacher-head">
             <div>
-                <span class="teacher-label"><i class="bi bi-person-video3"></i>BDC Teacher</span>
+                <span class="teacher-label"><i class="bi bi-person-video3"></i>AJAB Teacher</span>
                 <h1>Classroom Workspace</h1>
-                <p>Your teacher session is active and connected to the protected BDC portal.</p>
+                <p>Your teacher session is active and connected to the protected AJAB portal.</p>
             </div>
 
             <aside class="teacher-pass">
@@ -227,7 +227,7 @@
             <aside class="teacher-side">
                 <i class="bi bi-check2-circle"></i>
                 <h2>Ready</h2>
-                <p>Your BDC teacher account is verified for protected teacher pages.</p>
+                <p>Your AJAB teacher account is verified for protected teacher pages.</p>
             </aside>
         </div>
     </section>

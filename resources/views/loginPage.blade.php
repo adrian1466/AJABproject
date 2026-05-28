@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | BDC Portal</title>
+    <title>Login | AJAB Portal</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
@@ -277,7 +277,7 @@
         <section class="identity-side">
             <div class="brand-lockup">
                 <i class="bi bi-buildings-fill"></i>
-                <span>BDC School Portal</span>
+                <span>AJAB School Portal</span>
             </div>
 
             <div class="hero-copy">

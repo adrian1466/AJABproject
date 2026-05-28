@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'BDC Portal')</title>
+    <title>@yield('title', 'AJAB Portal')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         * {
@@ -3692,7 +3692,7 @@
             margin-top: 18px;
         }
 
-        /* BDC portal shell refresh */
+        /* AJAB portal shell refresh */
         body {
             background:
                 linear-gradient(180deg, #edf6f4 0%, #f8fbfc 46%, #eef2f7 100%) !important;
@@ -3782,7 +3782,7 @@
 <body>
 
     <nav>
-        <span class="nav-brand"><i class="bi bi-buildings-fill"></i> BDC</span>
+        <span class="nav-brand"><i class="bi bi-buildings-fill"></i> AJAB</span>
 
         @if(session('user_role') === 'admin')
             <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>

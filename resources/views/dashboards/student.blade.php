@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Student Dashboard | BDC')
+@section('title', 'Student Dashboard | AJAB')
 
 @section('content')
     <style>
@@ -198,9 +198,9 @@
     <section class="student-board">
         <header class="student-head">
             <div>
-                <span class="student-label"><i class="bi bi-mortarboard-fill"></i>BDC Student</span>
+                <span class="student-label"><i class="bi bi-mortarboard-fill"></i>AJAB Student</span>
                 <h1>Student Profile</h1>
-                <p>View your linked BDC student information, degree connection, and account status.</p>
+                <p>View your linked AJAB student information, degree connection, and account status.</p>
             </div>
 
             <aside class="student-pass">
@@ -247,7 +247,7 @@
             <aside class="student-side">
                 <i class="bi bi-patch-check-fill"></i>
                 <h2>Account Status</h2>
-                <p>{{ $student ? 'Your BDC student profile is connected and ready.' : 'Please ask an admin to connect your student profile.' }}</p>
+                <p>{{ $student ? 'Your AJAB student profile is connected and ready.' : 'Please ask an admin to connect your student profile.' }}</p>
             </aside>
         </div>
     </section>
