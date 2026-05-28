@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'AJAB Portal')</title>
+    <title>@yield('title', 'AJAB Student Record Management System')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         * {
@@ -3334,743 +3334,127 @@
                 grid-template-columns: 1fr;
             }
         }
-        /* 2026 UI refresh */
-        :root {
-            --ink: #172033;
-            --muted: #667085;
-            --line: #d7dee8;
-            --paper: #ffffff;
-            --wash: #f4f7f2;
-            --navy: #13233a;
-            --teal: #0f766e;
-            --coral: #d85a3a;
-            --gold: #b7791f;
-            --green: #15803d;
-            --red: #b42318;
-            --shadow: 0 16px 36px rgba(23, 32, 51, 0.10);
-        }
 
-        * {
-            font-family: Inter, "Segoe UI", Arial, sans-serif !important;
-            letter-spacing: 0 !important;
-        }
-
+        /* Dark blue portal refresh */
         body {
             background:
-                linear-gradient(180deg, #eef3ed 0%, #f8faf7 42%, #eef4f6 100%) !important;
-            color: var(--ink) !important;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background-image:
-                linear-gradient(rgba(19, 35, 58, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(19, 35, 58, 0.035) 1px, transparent 1px);
-            background-size: 36px 36px;
-            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 72%);
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34%),
+                linear-gradient(180deg, #06142d 0%, #071b3f 44%, #eef4fb 44%, #f8fafc 100%) !important;
+            color: #102033 !important;
         }
 
         nav {
-            position: sticky !important;
-            top: 0;
-            z-index: 20;
-            min-height: 68px;
-            padding: 12px clamp(16px, 4vw, 42px) !important;
-            background: rgba(255, 255, 255, 0.88) !important;
-            border-bottom: 1px solid rgba(19, 35, 58, 0.12) !important;
-            box-shadow: 0 10px 30px rgba(23, 32, 51, 0.08) !important;
-            backdrop-filter: blur(16px);
+            background: #06142d !important;
+            border-bottom: 1px solid rgba(147, 197, 253, 0.18) !important;
+            box-shadow: 0 14px 34px rgba(6, 20, 45, 0.28) !important;
         }
 
         .nav-brand {
-            min-height: 42px;
-            padding: 0 14px;
-            border-radius: 8px;
-            background: var(--navy);
-            color: #ffffff !important;
-            box-shadow: 0 10px 20px rgba(19, 35, 58, 0.18);
+            min-height: 38px;
+            padding: 0 12px;
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.18);
+            border: 1px solid rgba(147, 197, 253, 0.22);
         }
 
         nav a,
         nav button {
-            min-height: 38px;
-            display: inline-flex !important;
-            align-items: center;
-            color: #344054 !important;
-            border-radius: 8px !important;
-            font-weight: 800 !important;
+            color: #dbeafe !important;
+            border-radius: 10px !important;
         }
 
         nav a:hover,
         nav button:hover {
-            background: #e8f3ef !important;
-            color: var(--teal) !important;
+            background: rgba(59, 130, 246, 0.22) !important;
+            color: #ffffff !important;
         }
 
         .container {
-            position: relative;
-            width: min(1180px, calc(100% - 32px)) !important;
-            margin: 28px auto 52px !important;
-            padding: 0 !important;
+            max-width: 1160px;
         }
 
-        h1 {
-            color: var(--ink) !important;
-            font-size: clamp(30px, 4vw, 42px) !important;
-            line-height: 1.08 !important;
-            margin-bottom: 16px !important;
-        }
-
-        h2 {
-            color: var(--ink) !important;
-            font-size: 21px !important;
-            line-height: 1.25 !important;
-        }
-
-        p {
-            color: var(--muted) !important;
-        }
-
-        .btn,
-        button.btn,
-        .login-btn {
-            display: inline-flex !important;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-height: 42px;
-            padding: 10px 14px !important;
-            border-radius: 8px !important;
-            font-weight: 850 !important;
-            border: 1px solid transparent !important;
-            box-shadow: none !important;
-            transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, background 140ms ease;
-        }
-
-        .btn:hover,
-        button:hover {
-            transform: translateY(-1px);
-        }
-
-        .btn-primary,
-        .command-actions .btn-primary,
-        .studio-actions .btn-primary {
-            background: var(--teal) !important;
-            color: #ffffff !important;
+        .btn-primary {
+            background: #1d4ed8 !important;
         }
 
         .btn-primary:hover {
-            background: #115e59 !important;
+            background: #1e40af !important;
         }
 
-        .btn-success {
-            background: var(--green) !important;
-            color: #ffffff !important;
+        .table-search {
+            display: grid;
+            grid-template-columns: 18px minmax(180px, 280px);
+            gap: 8px;
+            align-items: center;
+            padding: 8px 10px;
+            border: 1px solid #c7d7ee;
+            border-radius: 10px;
+            background: #ffffff;
         }
 
-        .btn-warning {
-            background: var(--gold) !important;
-            color: #ffffff !important;
+        .table-search i {
+            color: #1d4ed8;
         }
 
-        .btn-danger {
-            background: var(--red) !important;
-            color: #ffffff !important;
+        .table-search input {
+            margin: 0;
+            padding: 6px 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
         }
 
-        .btn-secondary,
-        .command-actions .btn-secondary,
-        .studio-actions .btn-secondary {
-            background: #eef2f6 !important;
-            color: var(--ink) !important;
-            border-color: var(--line) !important;
+        .table-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: center;
+            margin-top: 14px;
+            flex-wrap: wrap;
+            color: #52657d;
+            font-weight: 700;
         }
 
-        .card,
-        .ajax-card,
-        .form-card,
-        .form-side-card,
-        .admin-work-panel,
-        .admin-side-panel,
-        .admin-metric,
-        .teacher-panel,
-        .teacher-ready-panel,
-        .student-panel,
-        .student-note-panel,
-        .studio-form-card,
-        .studio-side-panel,
-        .admin-panel,
-        .stat-card,
-        .workspace-panel,
-        .metric-card,
-        .admin-purple-panel,
-        .admin-purple-stats div {
-            border: 1px solid var(--line) !important;
-            border-radius: 8px !important;
-            background: rgba(255, 255, 255, 0.94) !important;
-            box-shadow: var(--shadow) !important;
+        .pagination-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        .dashboard-hero,
-        .admin-hero,
-        .role-hero,
-        .admin-command-hero,
-        .teacher-hero,
-        .student-hero,
-        .form-hero,
-        .student-command-header,
-        .studio-topbar,
-        .admin-purple-hero,
-        .ajax-toolbar {
-            border: 1px solid rgba(19, 35, 58, 0.14) !important;
-            border-radius: 8px !important;
-            background:
-                linear-gradient(135deg, rgba(19, 35, 58, 0.96), rgba(15, 118, 110, 0.90) 58%, rgba(216, 90, 58, 0.84)) !important;
-            color: #ffffff !important;
-            box-shadow: 0 18px 42px rgba(19, 35, 58, 0.20) !important;
+        .pagination-controls .btn[disabled] {
+            opacity: 0.55;
+            cursor: not-allowed;
         }
 
-        .dashboard-hero *,
-        .admin-hero *,
-        .role-hero *,
-        .admin-command-hero *,
-        .teacher-hero *,
-        .student-hero *,
-        .form-hero *,
-        .student-command-header *,
-        .studio-topbar *,
-        .admin-purple-hero *,
-        .ajax-toolbar * {
-            color: #ffffff !important;
+        .export-strip {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .eyebrow,
-        .dash-eyebrow,
-        .teacher-eyebrow,
-        .student-eyebrow,
-        .admin-kicker,
-        .panel-title span,
-        .panel-heading span,
-        .section-heading span,
-        .studio-heading span,
-        .studio-topbar span,
-        .ajax-card > h2:first-child,
-        .student-panel-heading span,
-        .teacher-panel-heading span {
-            color: var(--coral) !important;
-            font-weight: 900 !important;
-            text-transform: uppercase;
-        }
-
-        .dashboard-hero .eyebrow,
-        .admin-command-hero .dash-eyebrow,
-        .teacher-hero .teacher-eyebrow,
-        .student-hero .student-eyebrow,
-        .studio-topbar span {
-            color: #ffd9c9 !important;
-        }
-
-        .role-badge,
-        .admin-date-card,
-        .teacher-badge,
-        .student-status-card,
-        .hero-status,
-        .studio-pill,
-        .admin-purple-badge {
-            border-radius: 8px !important;
-            border: 1px solid rgba(255, 255, 255, 0.22) !important;
-            background: rgba(255, 255, 255, 0.13) !important;
-        }
-
-        table {
-            overflow: hidden;
-            border: 1px solid var(--line) !important;
-            border-radius: 8px;
-            background: var(--paper);
-            box-shadow: var(--shadow);
-        }
-
-        table,
-        th,
-        td {
-            border-color: #e4e9f0 !important;
-        }
-
-        th {
-            background: #13233a !important;
-            color: #ffffff !important;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        td {
-            background: rgba(255, 255, 255, 0.98);
-            color: #344054;
-        }
-
-        tbody tr:nth-child(even) td {
-            background: #f8faf7;
-        }
-
-        input,
-        select,
-        textarea {
-            min-height: 44px;
-            border-radius: 8px !important;
-            border: 1px solid #cfd8e3 !important;
-            background: #ffffff !important;
-            color: var(--ink) !important;
-            outline: none;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--teal) !important;
-            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.14) !important;
-        }
-
-        label {
-            color: #344054 !important;
-            font-weight: 850 !important;
-        }
-
-        .field-control i,
-        .admin-metric i,
-        .admin-action i,
-        .teacher-status i,
-        .student-detail i,
-        .studio-section-label i,
-        .tool-card i,
-        .action-tile i {
-            background: #e8f3ef !important;
-            color: var(--teal) !important;
-            border-radius: 8px !important;
-        }
-
-        .admin-action,
-        .tool-card,
-        .action-tile,
-        .teacher-status,
-        .student-detail,
-        .studio-section,
-        .system-list div {
-            border-radius: 8px !important;
-            background: #f8faf7 !important;
-            border-color: var(--line) !important;
-        }
-
-        .admin-action:hover,
-        .tool-card:hover,
-        .action-tile:hover {
-            border-color: var(--teal) !important;
-            box-shadow: 0 12px 26px rgba(15, 118, 110, 0.13) !important;
-        }
-
-        .alert {
-            border-radius: 8px !important;
-            border: 1px solid transparent;
-        }
-
-        .alert-success {
-            background: #ecfdf3 !important;
-            color: #027a48 !important;
-            border-color: #abefc6;
-        }
-
-        .alert-error,
-        .form-errors {
-            background: #fff1ed !important;
-            color: var(--red) !important;
-            border: 1px solid #fecdca !important;
-        }
-
-        .pagination {
-            margin-top: 18px;
-        }
-
-        /* AJAB portal shell refresh */
-        body {
-            background:
-                linear-gradient(180deg, #edf6f4 0%, #f8fbfc 46%, #eef2f7 100%) !important;
-        }
-
-        body::before {
-            background-image:
-                linear-gradient(rgba(27, 77, 137, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(27, 77, 137, 0.04) 1px, transparent 1px) !important;
-            background-size: 32px 32px !important;
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.92) !important;
-            border-bottom: 1px solid rgba(27, 77, 137, 0.14) !important;
-            box-shadow: 0 12px 30px rgba(24, 32, 47, 0.08) !important;
-        }
-
-        .nav-brand {
-            gap: 9px !important;
-            background: #1b4d89 !important;
-            color: #ffffff !important;
-        }
-
-        .nav-brand i {
-            color: #ffdc8a;
-        }
-
-        nav a,
-        nav button {
-            color: #344054 !important;
-        }
-
-        nav a:hover,
-        nav button:hover {
-            background: #eef6f4 !important;
-            color: #1f9d8a !important;
-        }
-
-        .admin-panel-clean,
-        .admin-stat,
-        .teacher-panel,
-        .teacher-side,
-        .student-panel,
-        .student-side {
-            background: #ffffff !important;
-            border-color: #d8e0ea !important;
-            border-radius: 8px !important;
-            box-shadow: 0 16px 34px rgba(24, 32, 47, 0.09) !important;
-        }
-
-        .admin-link,
-        .teacher-card,
-        .student-detail,
-        .student-empty {
-            background: #f8fbfc !important;
-            border-color: #d8e0ea !important;
-        }
-
-        @media (max-width: 720px) {
-            nav {
-                align-items: stretch;
-            }
-
-            nav a,
-            nav button,
-            .nav-brand {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .actions,
-            .ajax-actions,
-            .form-actions,
-            .studio-actions {
-                flex-wrap: wrap !important;
-            }
-
-            table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-        }
-
-        /* AJAB final screenshot theme */
-        body {
-            background:
-                linear-gradient(180deg, #061a33 0 170px, #eef7ff 170px 388px, #061a33 388px 602px, #eef7ff 602px 100%) !important;
-            color: #07142b !important;
-        }
-
-        body::before {
-            display: none !important;
-        }
-
-        nav {
-            min-height: 58px !important;
-            background: #061a33 !important;
-            border-bottom: 1px solid rgba(125, 211, 252, 0.14) !important;
-            box-shadow: none !important;
-        }
-
-        .nav-brand {
-            background: rgba(37, 99, 235, 0.22) !important;
-            color: #ffffff !important;
-        }
-
-        .nav-brand i,
-        nav a:hover,
-        nav button:hover {
-            color: #38bdf8 !important;
-        }
-
-        nav a,
-        nav button {
-            color: #dbeafe !important;
-        }
-
-        .container {
-            width: min(1180px, calc(100% - 32px)) !important;
-            max-width: 1180px !important;
-            margin: 24px auto 58px !important;
-            padding: 0 !important;
-        }
-
-        .admin-head,
-        .ajax-toolbar,
-        .form-hero.teacher-form-theme,
-        .studio-topbar {
-            border-radius: 12px !important;
-            background: linear-gradient(135deg, #071a36 0%, #092d57 58%, #123f7a 100%) !important;
-            border: 1px solid rgba(96, 165, 250, 0.28) !important;
-            box-shadow: none !important;
-            color: #ffffff !important;
-        }
-
-        .admin-head {
-            padding: 28px !important;
-            grid-template-columns: minmax(0, 1fr) 280px !important;
-        }
-
-        .admin-head h1 {
-            margin: 12px 0 10px !important;
-            color: #ffffff !important;
-            font-size: 32px !important;
-            line-height: 1.1 !important;
-        }
-
-        .admin-head p,
-        .ajax-toolbar p,
-        .form-hero.teacher-form-theme p,
-        .studio-topbar p {
-            color: #dbeafe !important;
-        }
-
-        .admin-kicker-new,
-        .admin-section-title span,
-        .admin-stat span,
-        .panel-title span,
-        .studio-heading span,
-        .studio-section-label,
-        .ajax-card > h2:first-child {
-            color: #0ea5e9 !important;
-            font-size: 11px !important;
-            font-weight: 950 !important;
-            letter-spacing: 0.08em !important;
-            text-transform: uppercase !important;
-        }
-
-        .admin-date {
-            border-radius: 12px !important;
-            background: rgba(7, 20, 43, 0.45) !important;
-            border-color: rgba(147, 197, 253, 0.22) !important;
-        }
-
-        .admin-date i {
-            color: #38bdf8 !important;
-        }
-
-        .admin-stats-new {
-            margin-top: -4px !important;
-        }
-
-        .admin-stat,
-        .admin-panel-clean,
-        .ajax-card,
-        .form-card,
-        .form-side-card,
-        .studio-form-card,
-        .studio-side-panel,
-        .teacher-list-shell {
-            border: 1px solid #c7ddf5 !important;
-            border-radius: 12px !important;
-            background: #ffffff !important;
-            box-shadow: 0 12px 32px rgba(7, 20, 43, 0.08) !important;
-        }
-
-        .admin-stat {
-            grid-template-columns: 52px minmax(0, 1fr) !important;
-            min-height: 88px !important;
-            padding: 18px 20px !important;
-            border-top: 0 !important;
-        }
-
-        .admin-stat i,
-        .admin-link i,
-        .teacher-list-shell .btn i {
-            background: #dbeafe !important;
-            color: #1d4ed8 !important;
-            border-radius: 8px !important;
-        }
-
-        .admin-stat strong {
-            color: #07142b !important;
-            font-size: 24px !important;
-        }
-
-        .admin-work {
-            grid-template-columns: minmax(0, 1fr) 340px !important;
-        }
-
-        .admin-panel-clean {
-            padding: 24px !important;
-        }
-
-        .admin-links {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            gap: 14px !important;
-        }
-
-        .admin-link {
-            min-height: 112px !important;
-            border-radius: 12px !important;
-            background: #f8fbff !important;
-            border-color: #d8e8fb !important;
-        }
-
-        .admin-checks div {
-            background: #eef6ff !important;
-            color: #07142b !important;
-            border-radius: 10px !important;
-        }
-
-        .admin-checks i {
-            color: #2563eb !important;
-        }
-
-        .container:has(.student-studio-interface),
-        .container:has(.form-hero.teacher-form-theme),
-        .container:has(.ajax-toolbar),
-        .container:has(.teacher-list-shell) {
-            max-width: 980px !important;
-        }
-
-        .student-studio-interface,
-        .form-workspace {
-            display: grid !important;
-            gap: 16px !important;
-        }
-
-        .studio-topbar {
-            grid-template-columns: auto minmax(0, 1fr) auto !important;
-            padding: 18px !important;
-        }
-
-        .studio-topbar h1,
-        .form-hero.teacher-form-theme h1 {
-            color: #ffffff !important;
-            font-size: 26px !important;
-            margin: 4px 0 0 !important;
-        }
-
-        .studio-grid,
-        .form-workspace {
-            grid-template-columns: minmax(0, 1fr) 280px !important;
-            align-items: start !important;
-        }
-
-        .studio-form-card,
-        .form-card {
-            padding: 22px !important;
-        }
-
-        .studio-section {
-            border-color: #e7d8ff !important;
-            background: #fbf8ff !important;
-            border-radius: 10px !important;
-        }
-
-        .studio-section-label i,
-        .studio-side-icon,
-        .form-side-card > i {
-            background: #4c1d95 !important;
-            color: #ffffff !important;
-            border-radius: 8px !important;
-        }
-
-        .student-studio-interface .field-control input,
-        .student-studio-interface .field-control select {
-            border-color: #c4b5fd !important;
-            background: #ffffff !important;
-        }
-
-        .student-studio-interface .field-control i {
-            color: #6d28d9 !important;
-        }
-
-        .form-hero.teacher-form-theme {
-            padding: 36px 28px !important;
-            background: linear-gradient(135deg, #123f7a 0%, #0f766e 100%) !important;
-        }
-
-        .form-workspace {
-            margin-top: 16px !important;
-        }
-
-        .form-card .field-control input {
-            border-color: #fdba74 !important;
-            background: #fffaf5 !important;
-        }
-
-        .form-card .field-control i,
-        .form-card .panel-title span {
-            color: #ea580c !important;
-        }
-
-        .form-side-card.teacher-card {
-            background: #ecfdf5 !important;
-            border-color: #bbf7d0 !important;
-        }
-
-        .ajax-toolbar {
-            min-height: 150px !important;
-            padding: 26px !important;
-            align-items: end !important;
-        }
-
-        .ajax-card {
-            max-width: 760px !important;
-            margin: 0 auto 18px !important;
-            padding: 22px !important;
-        }
-
-        .ajax-form-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        }
-
-        .teacher-list-shell {
-            max-width: 760px;
-            margin: 0 auto;
+        .dashboard-table-panel {
+            border: 1px solid #c7d7ee;
+            border-radius: 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
             padding: 22px;
         }
 
-        .teacher-list-shell h1 {
-            font-size: 24px !important;
-            margin-bottom: 18px !important;
-        }
+        @media (max-width: 720px) {
+            .section-heading {
+                align-items: stretch;
+                flex-direction: column;
+            }
 
-        table {
-            box-shadow: none !important;
-            border-radius: 0 !important;
-        }
+            .table-search {
+                grid-template-columns: 18px minmax(0, 1fr);
+                width: 100%;
+            }
 
-        th {
-            background: #f8fafc !important;
-            color: #07142b !important;
-        }
-
-        @media (max-width: 900px) {
-            .admin-head,
-            .admin-stats-new,
-            .admin-work,
-            .studio-topbar,
-            .studio-grid,
-            .form-workspace,
-            .ajax-form-grid {
-                grid-template-columns: 1fr !important;
+            .ajax-toolbar {
+                align-items: stretch;
             }
         }
     </style>
@@ -4078,7 +3462,7 @@
 <body>
 
     <nav>
-        <span class="nav-brand"><i class="bi bi-buildings-fill"></i> AJAB</span>
+        <span class="nav-brand">AJAB</span>
 
         @if(session('user_role') === 'admin')
             <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>

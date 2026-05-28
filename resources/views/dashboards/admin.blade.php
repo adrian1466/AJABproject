@@ -1,302 +1,312 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Dashboard | AJAB')
+@section('title', 'AJAB Admin Dashboard')
 
 @section('content')
     <style>
-        .admin-board {
+        .role-dashboard {
             display: grid;
             gap: 18px;
         }
 
-        .admin-board * {
+        .role-dashboard * {
             letter-spacing: 0;
         }
 
-        .admin-head {
+        .admin-command-hero {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 280px;
+            grid-template-columns: minmax(0, 1fr) 260px;
             gap: 18px;
             align-items: stretch;
-            padding: clamp(24px, 4vw, 38px);
-            border-radius: 8px;
+            padding: 28px;
+            border-radius: 18px;
             background:
-                linear-gradient(110deg, rgba(24, 32, 47, 0.95), rgba(27, 77, 137, 0.84)),
-                url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1500&q=80") center/cover;
+                linear-gradient(135deg, rgba(3, 15, 36, 0.98), rgba(11, 42, 91, 0.95)),
+                radial-gradient(circle at top right, rgba(56, 189, 248, 0.35), transparent 34%);
             color: #ffffff;
-            overflow: hidden;
+            border: 1px solid rgba(147, 197, 253, 0.22);
+            box-shadow: 0 22px 54px rgba(2, 8, 23, 0.26);
         }
 
-        .admin-head h1 {
-            max-width: 680px;
+        .admin-command-hero h1,
+        .admin-command-hero p {
+            color: #ffffff;
+        }
+
+        .admin-command-hero h1 {
             margin: 8px 0 10px;
-            color: #ffffff !important;
-            font-size: clamp(34px, 5vw, 56px);
-            line-height: 1;
+            font-size: 38px;
         }
 
-        .admin-head p {
-            max-width: 650px;
+        .admin-command-hero p {
+            max-width: 680px;
             margin: 0;
-            color: rgba(255, 255, 255, 0.88) !important;
+            color: #bfdbfe;
         }
 
-        .admin-kicker-new,
-        .admin-section-title span,
-        .admin-stat span {
-            color: #ffdc8a !important;
-            font-size: 12px;
-            font-weight: 950;
-            text-transform: uppercase;
-        }
-
-        .admin-kicker-new {
+        .dash-eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            color: #38bdf8;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
-        .admin-date {
+        .admin-date-card {
             display: grid;
             align-content: center;
-            gap: 10px;
-            padding: 20px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.24);
+            gap: 8px;
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(147, 197, 253, 0.22);
         }
 
-        .admin-date i {
-            font-size: 30px;
-            color: #ffdc8a;
+        .admin-date-card i {
+            font-size: 28px;
+            color: #38bdf8;
         }
 
-        .admin-date strong {
+        .admin-date-card strong {
             color: #ffffff;
-            font-size: 21px;
+            font-size: 20px;
         }
 
-        .admin-date span {
-            color: rgba(255, 255, 255, 0.86);
-            font-weight: 850;
+        .admin-date-card span {
+            color: #cbd5e1;
+            font-weight: 800;
         }
 
-        .admin-stats-new {
+        .admin-metrics {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 14px;
         }
 
-        .admin-stat,
-        .admin-panel-clean {
-            border: 1px solid #d8e0ea;
-            border-radius: 8px;
-            background: #ffffff;
-            box-shadow: 0 16px 34px rgba(24, 32, 47, 0.09);
+        .admin-metric,
+        .admin-work-panel,
+        .admin-side-panel {
+            border: 1px solid #c7d7ee;
+            border-radius: 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
         }
 
-        .admin-stat {
+        .admin-metric {
             display: grid;
-            grid-template-columns: 54px minmax(0, 1fr);
+            grid-template-columns: 48px minmax(0, 1fr);
             gap: 14px;
             align-items: center;
             padding: 18px;
-            border-top: 5px solid #1f9d8a;
         }
 
-        .admin-stat:nth-child(2) {
-            border-top-color: #1b4d89;
-        }
-
-        .admin-stat:nth-child(3) {
-            border-top-color: #f2b84b;
-        }
-
-        .admin-stat i,
-        .admin-link i {
+        .admin-metric i,
+        .admin-action i {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 48px;
             height: 48px;
-            border-radius: 8px;
-            background: #eef6f4;
-            color: #1f9d8a;
+            border-radius: 13px;
+            background: #dbeafe;
+            color: #0b2a5b;
             font-size: 22px;
         }
 
-        .admin-stat span {
-            color: #6b7280 !important;
+        .admin-metric span {
+            display: block;
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
-        .admin-stat strong {
+        .admin-metric strong {
             display: block;
             margin-top: 4px;
-            color: #18202f;
-            font-size: 34px;
+            color: #06142d;
+            font-size: 30px;
             line-height: 1;
         }
 
-        .admin-work {
+        .admin-content-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr) 320px;
-            gap: 18px;
+            gap: 16px;
             align-items: start;
         }
 
-        .admin-panel-clean {
+        .admin-work-panel,
+        .admin-side-panel {
             padding: 22px;
         }
 
-        .admin-section-title {
+        .panel-heading {
             margin-bottom: 16px;
         }
 
-        .admin-section-title span {
-            color: #1b4d89 !important;
+        .panel-heading span {
+            color: #1d4ed8;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
-        .admin-section-title h2 {
-            margin: 4px 0 0;
-            color: #18202f !important;
+        .panel-heading h2 {
+            margin: 5px 0 0;
+            color: #06142d;
+            font-size: 22px;
         }
 
-        .admin-links {
+        .admin-action-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
         }
 
-        .admin-link {
+        .admin-action {
             display: grid;
             grid-template-columns: 48px minmax(0, 1fr);
             gap: 14px;
             align-items: center;
-            min-height: 118px;
+            min-height: 112px;
             padding: 16px;
-            border-radius: 8px;
-            background: #f8fbfc;
-            border: 1px solid #d8e0ea;
-            color: #18202f;
+            border-radius: 14px;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
+            color: #06142d;
             text-decoration: none;
+            transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
         }
 
-        .admin-link:hover {
-            border-color: #1f9d8a;
-            box-shadow: 0 12px 24px rgba(31, 157, 138, 0.12);
+        .admin-action:hover {
+            transform: translateY(-2px);
+            border-color: #60a5fa;
+            box-shadow: 0 16px 28px rgba(29, 78, 216, 0.14);
         }
 
-        .admin-link strong {
-            color: #18202f;
+        .admin-action strong {
+            color: #06142d;
             font-size: 16px;
         }
 
-        .admin-link span {
+        .admin-action span {
             display: block;
             margin-top: 4px;
-            color: #647084;
+            color: #64748b;
             font-size: 13px;
             line-height: 1.45;
         }
 
-        .admin-checks {
+        .system-list {
             display: grid;
             gap: 12px;
         }
 
-        .admin-checks div {
+        .system-list div {
             display: flex;
             gap: 10px;
             align-items: flex-start;
             padding: 12px;
-            border-radius: 8px;
-            background: #eef6f4;
-            color: #28504b;
-            font-weight: 850;
-            line-height: 1.45;
+            border-radius: 12px;
+            background: #eef6ff;
+            color: #334155;
+            font-weight: 800;
+            line-height: 1.4;
         }
 
-        .admin-checks i {
-            color: #1f9d8a;
+        .system-list i {
+            color: #1d4ed8;
             margin-top: 2px;
         }
 
         @media (max-width: 900px) {
-            .admin-head,
-            .admin-stats-new,
-            .admin-work,
-            .admin-links {
+            .admin-command-hero,
+            .admin-metrics,
+            .admin-content-grid,
+            .admin-action-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 
-    <section class="admin-board">
-        <header class="admin-head">
+    <section class="role-dashboard">
+        <header class="admin-command-hero">
             <div>
-                <span class="admin-kicker-new"><i class="bi bi-shield-lock-fill"></i>Admin Workspace</span>
-                <h1>School Records Dashboard</h1>
-                <p>Manage students, teachers, degrees, and role-based access from one clean workspace.</p>
+                <span class="dash-eyebrow"><i class="bi bi-shield-lock"></i>Admin Workspace</span>
+                <h1>AJAB Admin Dashboard</h1>
+                <p>Manage students, teachers, degrees, exports, and role-based access from one clean workspace.</p>
             </div>
 
-            <aside class="admin-date">
-                <i class="bi bi-calendar2-check-fill"></i>
+            <aside class="admin-date-card">
+                <i class="bi bi-calendar2-check"></i>
                 <strong>Administrator</strong>
                 <span>{{ now()->format('M d, Y') }}</span>
             </aside>
         </header>
 
-        <section class="admin-stats-new">
-            <div class="admin-stat">
+        <section class="admin-metrics">
+            <div class="admin-metric">
                 <i class="bi bi-mortarboard-fill"></i>
                 <div><span>Students</span><strong>{{ $studentCount }}</strong></div>
             </div>
-            <div class="admin-stat">
+            <div class="admin-metric">
                 <i class="bi bi-person-video3"></i>
                 <div><span>Teachers</span><strong>{{ $teacherCount }}</strong></div>
             </div>
-            <div class="admin-stat">
+            <div class="admin-metric">
                 <i class="bi bi-people-fill"></i>
                 <div><span>Total Users</span><strong>{{ $studentCount + $teacherCount }}</strong></div>
             </div>
         </section>
 
-        <div class="admin-work">
-            <section class="admin-panel-clean">
-                <div class="admin-section-title">
+        <div class="admin-content-grid">
+            <section class="admin-work-panel">
+                <div class="panel-heading">
                     <span>Quick Actions</span>
                     <h2>Manage Records</h2>
                 </div>
 
-                <div class="admin-links">
-                    <a class="admin-link" href="/students/create">
+                <div class="export-strip" style="margin-bottom:14px;">
+                    <button type="button" class="btn btn-secondary export-records" data-format="pdf" data-title="AJAB Admin Student Records">
+                        <i class="bi bi-file-earmark-pdf"></i>Export PDF
+                    </button>
+                    <button type="button" class="btn btn-success export-records" data-format="excel" data-title="AJAB Admin Student Records">
+                        <i class="bi bi-file-earmark-spreadsheet"></i>Export Excel
+                    </button>
+                </div>
+
+                <div class="admin-action-grid">
+                    <a class="admin-action" href="/students/create">
                         <i class="bi bi-person-plus-fill"></i>
                         <div><strong>Add Student</strong><span>Create student record and login access.</span></div>
                     </a>
-                    <a class="admin-link" href="{{ route('teachers.create') }}">
+                    <a class="admin-action" href="{{ route('teachers.create') }}">
                         <i class="bi bi-person-fill-add"></i>
                         <div><strong>Add Teacher</strong><span>Create a teacher account.</span></div>
                     </a>
-                    <a class="admin-link" href="/students">
+                    <a class="admin-action" href="/students">
                         <i class="bi bi-table"></i>
                         <div><strong>Student List</strong><span>Review, update, and manage student data.</span></div>
                     </a>
-                    <a class="admin-link" href="{{ route('teachers.index') }}">
+                    <a class="admin-action" href="{{ route('teachers.index') }}">
                         <i class="bi bi-journal-bookmark-fill"></i>
                         <div><strong>Teacher List</strong><span>View all teacher accounts.</span></div>
                     </a>
                 </div>
             </section>
 
-            <aside class="admin-panel-clean">
-                <div class="admin-section-title">
+            <aside class="admin-side-panel">
+                <div class="panel-heading">
                     <span>Status</span>
                     <h2>System Checks</h2>
                 </div>
 
-                <div class="admin-checks">
+                <div class="system-list">
                     <div><i class="bi bi-check-circle-fill"></i>Admin routes are role protected</div>
-                    <div><i class="bi bi-check-circle-fill"></i>Student AJAX list route is active</div>
+                    <div><i class="bi bi-check-circle-fill"></i>Student record list route is active</div>
                     <div><i class="bi bi-check-circle-fill"></i>Teacher and student dashboards are available</div>
                 </div>
             </aside>

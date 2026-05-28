@@ -1,12 +1,20 @@
 @extends('layouts.app')
 
-@section('title', 'AJAX Student List')
+@section('title', 'AJAB Student Records')
 
 @section('content')
     <div class="ajax-toolbar">
         <div>
-            <h1>AJAX Student Management</h1>
-            <p>Load, add, update, and delete student records using jQuery AJAX.</p>
+            <h1>AJAB Student Records</h1>
+            <p>Add, update, search, export, and maintain student records.</p>
+        </div>
+        <div class="action-row">
+            <button type="button" class="btn btn-secondary export-records" data-format="pdf" data-title="AJAB Student Records">
+                <i class="bi bi-file-earmark-pdf"></i>PDF
+            </button>
+            <button type="button" class="btn btn-success export-records" data-format="excel" data-title="AJAB Student Records">
+                <i class="bi bi-file-earmark-spreadsheet"></i>Excel
+            </button>
         </div>
     </div>
 
@@ -83,19 +91,28 @@
     </section>
 
     <section class="ajax-card">
-        <h2>Student Records</h2>
+        <div class="section-heading compact">
+            <div>
+                <span>Directory</span>
+                <h2>Student Records</h2>
+            </div>
+            <div class="table-search">
+                <i class="bi bi-search"></i>
+                <input type="search" id="studentSearch" placeholder="Search records">
+            </div>
+        </div>
 
         <div class="ajax-table-wrap">
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>User Account ID</th>
                         <th>Student ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Degree</th>
                         <th>Email</th>
+                        <th>Contact</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -105,6 +122,10 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="table-footer">
+            <span id="studentTableSummary">Loading records...</span>
+            <div id="studentPagination" class="pagination-controls"></div>
         </div>
     </section>
 @endsection

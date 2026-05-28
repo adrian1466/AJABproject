@@ -1,222 +1,215 @@
 @extends('layouts.app')
 
-@section('title', 'Teacher Dashboard | AJAB')
+@section('title', 'AJAB Teacher Dashboard')
 
 @section('content')
     <style>
-        .teacher-board {
+        .teacher-dashboard {
             display: grid;
             gap: 18px;
         }
 
-        .teacher-head {
+        .teacher-hero {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 270px;
+            grid-template-columns: minmax(0, 1fr) 260px;
             gap: 18px;
             align-items: stretch;
-            padding: clamp(24px, 4vw, 38px);
-            border-radius: 8px;
+            padding: 28px;
+            border-radius: 18px;
             background:
-                linear-gradient(105deg, rgba(16, 58, 83, 0.94), rgba(31, 157, 138, 0.82)),
-                url("https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1500&q=80") center/cover;
+                linear-gradient(135deg, rgba(3, 15, 36, 0.98), rgba(11, 42, 91, 0.95)),
+                radial-gradient(circle at top right, rgba(56, 189, 248, 0.32), transparent 34%);
+            color: #ffffff;
+            border: 1px solid rgba(147, 197, 253, 0.22);
+            box-shadow: 0 22px 54px rgba(2, 8, 23, 0.26);
+        }
+
+        .teacher-hero h1,
+        .teacher-hero p {
             color: #ffffff;
         }
 
-        .teacher-head h1 {
+        .teacher-hero h1 {
             margin: 8px 0 10px;
-            color: #ffffff !important;
-            font-size: clamp(34px, 5vw, 54px);
-            line-height: 1;
+            font-size: 38px;
         }
 
-        .teacher-head p {
+        .teacher-hero p {
             max-width: 650px;
             margin: 0;
-            color: rgba(255, 255, 255, 0.88) !important;
+            color: #bfdbfe;
         }
 
-        .teacher-label,
-        .teacher-section span,
-        .teacher-card span {
+        .teacher-eyebrow,
+        .teacher-panel-heading span {
+            color: #38bdf8;
             font-size: 12px;
-            font-weight: 950;
+            font-weight: 900;
             text-transform: uppercase;
         }
 
-        .teacher-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #ffdc8a !important;
-        }
-
-        .teacher-pass {
+        .teacher-badge {
             display: grid;
             align-content: center;
-            gap: 10px;
-            padding: 20px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.24);
+            gap: 8px;
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(147, 197, 253, 0.22);
         }
 
-        .teacher-pass i {
-            color: #ffdc8a;
+        .teacher-badge i {
+            color: #38bdf8;
             font-size: 30px;
         }
 
-        .teacher-pass strong {
+        .teacher-badge strong {
             color: #ffffff;
-            font-size: 22px;
+            font-size: 20px;
         }
 
-        .teacher-pass span {
-            color: rgba(255, 255, 255, 0.86);
-            font-weight: 850;
+        .teacher-badge span {
+            color: #bfdbfe;
+            font-weight: 800;
         }
 
-        .teacher-work {
+        .teacher-main-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr) 320px;
-            gap: 18px;
+            gap: 16px;
             align-items: start;
         }
 
         .teacher-panel,
-        .teacher-side {
+        .teacher-ready-panel {
+            border: 1px solid #c7d7ee;
+            border-radius: 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
             padding: 22px;
-            border: 1px solid #d8e0ea;
-            border-radius: 8px;
-            background: #ffffff;
-            box-shadow: 0 16px 34px rgba(24, 32, 47, 0.09);
         }
 
-        .teacher-section {
+        .teacher-panel-heading {
             margin-bottom: 16px;
         }
 
-        .teacher-section span {
-            color: #1b4d89 !important;
+        .teacher-panel-heading span {
+            color: #1d4ed8;
         }
 
-        .teacher-section h2 {
+        .teacher-panel-heading h2 {
             margin: 5px 0 0;
-            color: #18202f !important;
+            color: #06142d;
+            font-size: 22px;
         }
 
-        .teacher-panel p,
-        .teacher-side p {
-            color: #647084 !important;
+        .teacher-panel p {
+            margin-top: 0;
+            color: #52657d;
         }
 
-        .teacher-cards {
+        .teacher-status-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 12px;
             margin-top: 18px;
         }
 
-        .teacher-card {
+        .teacher-status {
             display: grid;
-            gap: 9px;
-            min-height: 136px;
+            gap: 8px;
             padding: 16px;
-            border-radius: 8px;
-            background: #f8fbfc;
-            border: 1px solid #d8e0ea;
-            border-top: 5px solid #1b4d89;
+            border-radius: 14px;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
         }
 
-        .teacher-card:nth-child(2) {
-            border-top-color: #1f9d8a;
-        }
-
-        .teacher-card:nth-child(3) {
-            border-top-color: #f2b84b;
-        }
-
-        .teacher-card i,
-        .teacher-side > i {
+        .teacher-status i,
+        .teacher-ready-panel > i {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 44px;
             height: 44px;
-            border-radius: 8px;
-            background: #eef6f4;
-            color: #1f9d8a;
+            border-radius: 12px;
+            background: #dbeafe;
+            color: #0b2a5b;
             font-size: 20px;
         }
 
-        .teacher-card span {
-            color: #647084;
+        .teacher-status span {
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
-        .teacher-card strong {
-            color: #18202f;
+        .teacher-status strong {
+            color: #06142d;
             font-size: 17px;
         }
 
-        .teacher-side {
+        .teacher-ready-panel {
             display: grid;
             gap: 12px;
-            background: #f8fbfc;
+            background: #eef6ff;
         }
 
-        .teacher-side h2 {
+        .teacher-ready-panel h2 {
             margin: 0;
-            color: #18202f !important;
+            color: #06142d;
         }
 
-        .teacher-side p {
+        .teacher-ready-panel p {
             margin: 0;
+            color: #52657d;
         }
 
         @media (max-width: 900px) {
-            .teacher-head,
-            .teacher-work,
-            .teacher-cards {
+            .teacher-hero,
+            .teacher-main-grid,
+            .teacher-status-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 
-    <section class="teacher-board">
-        <header class="teacher-head">
+    <section class="teacher-dashboard">
+        <header class="teacher-hero">
             <div>
-                <span class="teacher-label"><i class="bi bi-person-video3"></i>AJAB Teacher</span>
-                <h1>Classroom Workspace</h1>
-                <p>Your teacher session is active and connected to the protected AJAB portal.</p>
+                <span class="teacher-eyebrow"><i class="bi bi-person-video3"></i> Teacher Workspace</span>
+                <h1>AJAB Teacher Dashboard</h1>
+                <p>Review student records, search the directory, and export class reports.</p>
             </div>
 
-            <aside class="teacher-pass">
+            <aside class="teacher-badge">
                 <i class="bi bi-person-badge-fill"></i>
                 <strong>Teacher</strong>
                 <span>Session Active</span>
             </aside>
         </header>
 
-        <div class="teacher-work">
+        <div class="teacher-main-grid">
             <section class="teacher-panel">
-                <div class="teacher-section">
-                    <span>Overview</span>
+                <div class="teacher-panel-heading">
+                    <span>Account Overview</span>
                     <h2>Teacher Status</h2>
                 </div>
 
-                <p>This page confirms your teacher access. Admin and student pages remain separated by session and role middleware.</p>
+                <p>You are viewing the teacher dashboard. Student records are available for review and reporting.</p>
 
-                <div class="teacher-cards">
-                    <div class="teacher-card">
+                <div class="teacher-status-grid">
+                    <div class="teacher-status">
                         <i class="bi bi-key-fill"></i>
                         <span>Access Level</span>
                         <strong>Teacher</strong>
                     </div>
-                    <div class="teacher-card">
+                    <div class="teacher-status">
                         <i class="bi bi-wifi"></i>
                         <span>Session</span>
                         <strong>Active</strong>
                     </div>
-                    <div class="teacher-card">
+                    <div class="teacher-status">
                         <i class="bi bi-lock-fill"></i>
                         <span>Protection</span>
                         <strong>Enabled</strong>
@@ -224,11 +217,59 @@
                 </div>
             </section>
 
-            <aside class="teacher-side">
+            <aside class="teacher-ready-panel">
                 <i class="bi bi-check2-circle"></i>
                 <h2>Ready</h2>
-                <p>Your AJAB teacher account is verified for protected teacher pages.</p>
+                <p>Your teacher account is verified and available for protected teacher pages.</p>
             </aside>
         </div>
+
+        <section class="dashboard-table-panel">
+            <div class="section-heading compact">
+                <div>
+                    <span>Student Directory</span>
+                    <h2>Records and Reports</h2>
+                </div>
+                <div class="export-strip">
+                    <div class="table-search">
+                        <i class="bi bi-search"></i>
+                        <input type="search" id="studentSearch" placeholder="Search records">
+                    </div>
+                    <button type="button" class="btn btn-secondary export-records" data-format="pdf" data-title="AJAB Teacher Student Records">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </button>
+                    <button type="button" class="btn btn-success export-records" data-format="excel" data-title="AJAB Teacher Student Records">
+                        <i class="bi bi-file-earmark-spreadsheet"></i>Excel
+                    </button>
+                </div>
+            </div>
+
+            <div id="ajaxMessage" class="ajax-message"></div>
+
+            <div class="ajax-table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Degree</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <tr>
+                            <td colspan="7" class="loading-row">Loading student records...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <span id="studentTableSummary">Loading records...</span>
+                <div id="studentPagination" class="pagination-controls"></div>
+            </div>
+        </section>
     </section>
 @endsection

@@ -1,110 +1,109 @@
 @extends('layouts.app')
 
-@section('title', 'Student Dashboard | AJAB')
+@section('title', 'AJAB Student Dashboard')
 
 @section('content')
     <style>
-        .student-board {
+        .student-dashboard {
             display: grid;
             gap: 18px;
         }
 
-        .student-head {
+        .student-hero {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 270px;
+            grid-template-columns: minmax(0, 1fr) 260px;
             gap: 18px;
             align-items: stretch;
-            padding: clamp(24px, 4vw, 38px);
-            border-radius: 8px;
+            padding: 28px;
+            border-radius: 18px;
             background:
-                linear-gradient(105deg, rgba(24, 32, 47, 0.94), rgba(217, 93, 96, 0.78)),
-                url("https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1500&q=80") center/cover;
+                linear-gradient(135deg, rgba(3, 15, 36, 0.98), rgba(11, 42, 91, 0.95)),
+                radial-gradient(circle at top right, rgba(56, 189, 248, 0.32), transparent 34%);
+            color: #ffffff;
+            border: 1px solid rgba(147, 197, 253, 0.22);
+            box-shadow: 0 22px 54px rgba(2, 8, 23, 0.26);
+        }
+
+        .student-hero h1,
+        .student-hero p {
             color: #ffffff;
         }
 
-        .student-head h1 {
+        .student-hero h1 {
             margin: 8px 0 10px;
-            color: #ffffff !important;
-            font-size: clamp(34px, 5vw, 54px);
-            line-height: 1;
+            font-size: 38px;
         }
 
-        .student-head p {
+        .student-hero p {
             max-width: 650px;
             margin: 0;
-            color: rgba(255, 255, 255, 0.88) !important;
+            color: #bfdbfe;
         }
 
-        .student-label,
-        .student-section span,
-        .student-detail span {
+        .student-eyebrow,
+        .student-panel-heading span {
+            color: #38bdf8;
             font-size: 12px;
-            font-weight: 950;
+            font-weight: 900;
             text-transform: uppercase;
         }
 
-        .student-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #ffdc8a !important;
-        }
-
-        .student-pass {
+        .student-status-card {
             display: grid;
             align-content: center;
-            gap: 10px;
-            padding: 20px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.24);
+            gap: 8px;
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(147, 197, 253, 0.22);
         }
 
-        .student-pass i {
-            color: #ffdc8a;
+        .student-status-card i {
             font-size: 30px;
+            color: #38bdf8;
         }
 
-        .student-pass strong {
+        .student-status-card strong {
             color: #ffffff;
-            font-size: 22px;
+            font-size: 20px;
         }
 
-        .student-pass span {
-            color: rgba(255, 255, 255, 0.86);
-            font-weight: 850;
+        .student-status-card span {
+            color: #bfdbfe;
+            font-weight: 800;
         }
 
-        .student-work {
+        .student-main-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr) 320px;
-            gap: 18px;
+            gap: 16px;
             align-items: start;
         }
 
         .student-panel,
-        .student-side {
+        .student-note-panel {
+            border: 1px solid #c7d7ee;
+            border-radius: 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+            box-shadow: 0 14px 34px rgba(11, 42, 91, 0.10);
             padding: 22px;
-            border: 1px solid #d8e0ea;
-            border-radius: 8px;
-            background: #ffffff;
-            box-shadow: 0 16px 34px rgba(24, 32, 47, 0.09);
         }
 
-        .student-section {
+        .student-panel-heading {
             margin-bottom: 16px;
         }
 
-        .student-section span {
-            color: #1b4d89 !important;
+        .student-panel-heading span {
+            color: #1d4ed8;
         }
 
-        .student-section h2 {
+        .student-panel-heading h2 {
             margin: 5px 0 0;
-            color: #18202f !important;
+            color: #06142d;
+            font-size: 22px;
         }
 
-        .student-grid {
+        .student-detail-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
@@ -112,62 +111,59 @@
 
         .student-detail {
             display: grid;
-            grid-template-columns: 48px minmax(0, 1fr);
-            gap: 14px;
+            grid-template-columns: 44px minmax(0, 1fr);
+            gap: 12px;
             align-items: center;
-            min-height: 104px;
+            min-height: 98px;
             padding: 16px;
-            border-radius: 8px;
-            background: #f8fbfc;
-            border: 1px solid #d8e0ea;
-            border-left: 5px solid #d95d60;
-        }
-
-        .student-detail:nth-child(2),
-        .student-detail:nth-child(4) {
-            border-left-color: #1f9d8a;
+            border-radius: 14px;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
         }
 
         .student-detail i,
-        .student-side > i,
+        .student-note-panel > i,
         .student-empty i {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 44px;
             height: 44px;
-            border-radius: 8px;
-            background: #fff1f1;
-            color: #d95d60;
+            border-radius: 12px;
+            background: #dbeafe;
+            color: #0b2a5b;
             font-size: 20px;
         }
 
         .student-detail span {
             display: block;
-            color: #647084;
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
         .student-detail strong {
             display: block;
             margin-top: 4px;
-            color: #18202f;
+            color: #06142d;
             word-break: break-word;
         }
 
-        .student-side {
+        .student-note-panel {
             display: grid;
             gap: 12px;
-            background: #f8fbfc;
+            background: #eef6ff;
         }
 
-        .student-side h2 {
+        .student-note-panel h2 {
             margin: 0;
-            color: #18202f !important;
+            color: #06142d;
         }
 
-        .student-side p {
+        .student-note-panel p {
             margin: 0;
-            color: #647084 !important;
+            color: #52657d;
         }
 
         .student-empty {
@@ -175,50 +171,50 @@
             gap: 12px;
             align-items: center;
             padding: 18px;
-            border-radius: 8px;
-            background: #f8fbfc;
-            border: 1px solid #d8e0ea;
+            border-radius: 14px;
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
         }
 
         .student-empty p {
             margin: 0;
-            color: #344054 !important;
-            font-weight: 850;
+            color: #334155;
+            font-weight: 800;
         }
 
         @media (max-width: 900px) {
-            .student-head,
-            .student-work,
-            .student-grid {
+            .student-hero,
+            .student-main-grid,
+            .student-detail-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 
-    <section class="student-board">
-        <header class="student-head">
+    <section class="student-dashboard">
+        <header class="student-hero">
             <div>
-                <span class="student-label"><i class="bi bi-mortarboard-fill"></i>AJAB Student</span>
-                <h1>Student Profile</h1>
-                <p>View your linked AJAB student information, degree connection, and account status.</p>
+                <span class="student-eyebrow"><i class="bi bi-mortarboard-fill"></i> Student Portal</span>
+                <h1>AJAB Student Dashboard</h1>
+                <p>View your student information, degree connection, and account status in one focused dashboard.</p>
             </div>
 
-            <aside class="student-pass">
+            <aside class="student-status-card">
                 <i class="bi bi-person-check-fill"></i>
                 <strong>{{ $student ? 'Profile Linked' : 'Profile Pending' }}</strong>
                 <span>Student Access</span>
             </aside>
         </header>
 
-        <div class="student-work">
+        <div class="student-main-grid">
             <section class="student-panel">
-                <div class="student-section">
-                    <span>Profile</span>
+                <div class="student-panel-heading">
+                    <span>Profile Details</span>
                     <h2>Student Information</h2>
                 </div>
 
                 @if($student)
-                    <div class="student-grid">
+                    <div class="student-detail-grid">
                         <div class="student-detail">
                             <i class="bi bi-hash"></i>
                             <div><span>Student ID</span><strong>{{ $student->student_id }}</strong></div>
@@ -244,10 +240,21 @@
                 @endif
             </section>
 
-            <aside class="student-side">
+            <aside class="student-note-panel">
                 <i class="bi bi-patch-check-fill"></i>
                 <h2>Account Status</h2>
-                <p>{{ $student ? 'Your AJAB student profile is connected and ready.' : 'Please ask an admin to connect your student profile.' }}</p>
+                <p>{{ $student ? 'Your student profile is connected and ready.' : 'Please ask an admin to connect your student profile.' }}</p>
+                @if($student)
+                    <div class="export-strip">
+                        <button type="button" class="btn btn-secondary export-records" data-format="pdf" data-url="{{ route('students.my-record') }}" data-title="AJAB Student Profile">
+                            <i class="bi bi-file-earmark-pdf"></i>PDF
+                        </button>
+                        <button type="button" class="btn btn-success export-records" data-format="excel" data-url="{{ route('students.my-record') }}" data-title="AJAB Student Profile">
+                            <i class="bi bi-file-earmark-spreadsheet"></i>Excel
+                        </button>
+                    </div>
+                    <div id="ajaxMessage" class="ajax-message"></div>
+                @endif
             </aside>
         </div>
     </section>

@@ -27,9 +27,17 @@ Route::middleware('auth.session')->group(function () {
         ->middleware('role:teacher')
         ->name('teacher.dashboard');
 
+    Route::middleware('role:admin,teacher')->group(function () {
+        Route::get('/students/ajax/list', [StudentController::class, 'ajaxIndex'])->name('students.ajax.index');
+        Route::get('/students/export-data', [StudentController::class, 'exportData'])->name('students.export.data');
+    });
+
+    Route::get('/students/my-record', [StudentController::class, 'myRecord'])
+        ->middleware('role:student')
+        ->name('students.my-record');
+
     Route::middleware('role:admin')->group(function () {
         Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
-        Route::get('/students/ajax/list', [StudentController::class, 'ajaxIndex'])->name('students.ajax.index');
         Route::resource('degrees', DegreeController::class);
         Route::resource('students', StudentController::class)->middleware('maintenance');
         Route::resource('teachers', TeacherController::class)->only(['index', 'create', 'store']);

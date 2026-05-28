@@ -3,190 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | AJAB Portal</title>
+    <title>AJAB Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         * {
             box-sizing: border-box;
             font-family: "Segoe UI", Arial, sans-serif;
-            letter-spacing: 0;
         }
 
         body {
             min-height: 100vh;
             margin: 0;
+            padding: 28px;
             display: grid;
             place-items: center;
-            padding: 24px;
             background:
-                linear-gradient(rgba(5, 12, 26, 0.58), rgba(5, 12, 26, 0.68)),
-                url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1800&q=85") center/cover;
-            color: #0f172a;
+                linear-gradient(180deg, rgba(2, 8, 23, 0.24), rgba(2, 8, 23, 0.86)),
+                url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1800&q=80") center/cover;
+            color: #eaf2ff;
         }
 
         .login-shell {
-            width: min(1024px, 100%);
-            min-height: 604px;
+            width: min(1120px, 100%);
+            min-height: 660px;
             display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.85fr);
+            grid-template-columns: minmax(0, 1fr) 430px;
+            gap: 0;
             overflow: hidden;
             border-radius: 24px;
-            border: 1px solid rgba(147, 197, 253, 0.28);
-            box-shadow: 0 30px 80px rgba(2, 8, 23, 0.45);
+            background: rgba(3, 15, 36, 0.90);
+            border: 1px solid rgba(147, 197, 253, 0.24);
+            box-shadow: 0 32px 90px rgba(2, 8, 23, 0.58);
+            backdrop-filter: blur(16px);
         }
 
-        .hero-panel {
+        .brand-panel {
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px;
+            padding: 42px;
             background:
-                radial-gradient(circle at 74% 22%, rgba(14, 116, 144, 0.42), transparent 34%),
-                linear-gradient(135deg, rgba(3, 17, 42, 0.98), rgba(13, 47, 88, 0.96));
-            color: #ffffff;
+                radial-gradient(circle at 82% 20%, rgba(56, 189, 248, 0.24), transparent 30%),
+                linear-gradient(135deg, rgba(6, 20, 45, 0.94), rgba(11, 42, 91, 0.78));
         }
 
-        .secure-pill {
+        .brand-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand-mark,
+        .session-pill {
             display: inline-flex;
             align-items: center;
-            gap: 9px;
-            width: fit-content;
-            min-height: 38px;
+            gap: 10px;
+            min-height: 42px;
             padding: 0 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(147, 197, 253, 0.26);
-            color: #dbeafe;
-            font-size: 12px;
-            font-weight: 800;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.42);
+            border: 1px solid rgba(147, 197, 253, 0.22);
+            font-weight: 900;
         }
 
-        .secure-pill i,
-        .kicker,
-        .feature-card i,
-        .login-icon,
-        .note i {
+        .brand-mark i,
+        .session-pill i {
             color: #38bdf8;
         }
 
-        .hero-copy {
-            max-width: 620px;
+        .session-pill {
+            color: #bfdbfe;
+            font-size: 13px;
         }
 
-        .kicker {
-            display: block;
-            margin-bottom: 16px;
+        .brand-copy {
+            max-width: 600px;
+        }
+
+        .brand-copy span {
+            display: inline-flex;
+            margin-bottom: 14px;
+            color: #38bdf8;
             font-size: 12px;
-            font-weight: 950;
-            letter-spacing: 0.18em;
+            font-weight: 900;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
         }
 
-        .hero-copy h1 {
-            margin: 0 0 18px;
-            max-width: 610px;
+        .brand-copy h1 {
+            margin: 0;
             color: #ffffff;
-            font-size: clamp(42px, 5vw, 56px);
-            line-height: 1.04;
-            font-weight: 950;
+            font-size: 54px;
+            line-height: 1.02;
         }
 
-        .hero-copy p {
-            max-width: 560px;
-            margin: 0;
-            color: #dbeafe;
-            font-size: 15px;
+        .brand-copy p {
+            max-width: 500px;
+            margin: 18px 0 0;
+            color: #c7d7ee;
+            font-size: 16px;
             line-height: 1.7;
         }
 
-        .feature-grid {
+        .role-strip {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 12px;
             margin-top: 30px;
         }
 
-        .feature-card {
-            min-height: 108px;
+        .role-strip div {
+            min-height: 118px;
+            display: grid;
+            align-content: space-between;
+            gap: 14px;
             padding: 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(147, 197, 253, 0.24);
-            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            background: rgba(248, 251, 255, 0.08);
+            border: 1px solid rgba(147, 197, 253, 0.18);
+            color: #eaf2ff;
+            font-weight: 850;
         }
 
-        .feature-card i {
+        .role-strip i {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            margin-bottom: 16px;
-            border-radius: 10px;
-            background: rgba(56, 189, 248, 0.12);
-            font-size: 18px;
-        }
-
-        .feature-card span {
-            display: block;
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 850;
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            background: rgba(56, 189, 248, 0.14);
+            color: #7dd3fc;
+            font-size: 19px;
         }
 
         .form-panel {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 38px;
-            background: #f4f8ff;
+            padding: 42px;
+            background: linear-gradient(180deg, #f8fbff 0%, #eaf2ff 100%);
+            color: #06142d;
         }
 
-        .login-icon {
+        .form-card {
+            width: 100%;
+            display: grid;
+            gap: 22px;
+        }
+
+        .form-heading i {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 46px;
-            height: 46px;
-            margin-bottom: 24px;
-            border-radius: 13px;
-            background: #04132c;
-            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: #06142d;
+            color: #38bdf8;
+            font-size: 22px;
+            margin-bottom: 18px;
         }
 
-        .form-panel h2 {
+        .form-heading h2 {
             margin: 0 0 8px;
-            color: #0f172a;
+            color: #06142d;
             font-size: 34px;
-            line-height: 1.1;
-            font-weight: 950;
         }
 
-        .form-panel p {
-            margin: 0 0 28px;
-            color: #475569;
-            font-size: 14px;
+        .form-heading p {
+            margin: 0;
+            color: #52657d;
+            line-height: 1.6;
         }
 
         .alert-error {
-            padding: 13px 14px;
-            margin-bottom: 18px;
-            border-radius: 10px;
-            border: 1px solid #fecaca;
+            padding: 13px 15px;
+            border-radius: 12px;
             background: #fef2f2;
+            border: 1px solid #fecaca;
             color: #991b1b;
             font-size: 14px;
-            font-weight: 850;
+            font-weight: 800;
         }
 
         form {
             display: grid;
-            gap: 18px;
+            gap: 17px;
+            margin: 0;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #0f172a;
-            font-size: 13px;
+            color: #102033;
+            font-size: 14px;
             font-weight: 900;
         }
 
@@ -197,72 +210,72 @@
         .field i {
             position: absolute;
             top: 50%;
-            left: 16px;
+            left: 15px;
             transform: translateY(-50%);
-            color: #2563eb;
-            font-size: 15px;
+            color: #1d4ed8;
         }
 
         input {
             width: 100%;
-            min-height: 50px;
-            padding: 0 16px 0 44px;
+            min-height: 56px;
+            padding: 0 16px 0 46px;
             border: 1px solid #bfdbfe;
-            border-radius: 12px;
+            border-radius: 14px;
             background: #ffffff;
-            color: #0f172a;
+            color: #06142d;
+            font-size: 15px;
             outline: none;
         }
 
         input:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.13);
+            border-color: #1d4ed8;
+            box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.15);
         }
 
         .login-btn {
+            min-height: 56px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            min-height: 52px;
-            margin-top: 2px;
             border: 0;
-            border-radius: 12px;
-            background: #04132c;
+            border-radius: 14px;
+            background: #06142d;
             color: #ffffff;
-            font-size: 15px;
-            font-weight: 950;
             cursor: pointer;
-            box-shadow: 0 18px 28px rgba(4, 19, 44, 0.22);
+            font-size: 15px;
+            font-weight: 900;
+            box-shadow: 0 16px 28px rgba(6, 20, 45, 0.26);
         }
 
         .login-btn:hover {
-            background: #0b1e42;
+            background: #1d4ed8;
         }
 
-        .note {
+        .login-help {
             display: flex;
             gap: 10px;
-            margin-top: 24px;
-            padding: 15px;
-            border-radius: 10px;
+            align-items: flex-start;
+            padding: 14px;
+            border-radius: 14px;
             background: #dbeafe;
-            color: #0f172a;
+            color: #334155;
             font-size: 13px;
-            line-height: 1.55;
+            line-height: 1.5;
         }
 
-        @media (max-width: 900px) {
-            body {
-                place-items: start center;
-            }
+        .login-help i {
+            color: #1d4ed8;
+            margin-top: 2px;
+        }
 
+        @media (max-width: 920px) {
             .login-shell {
                 grid-template-columns: 1fr;
             }
 
-            .hero-panel {
-                min-height: 500px;
+            .brand-panel {
+                min-height: 430px;
             }
         }
 
@@ -271,84 +284,99 @@
                 padding: 12px;
             }
 
-            .hero-panel,
+            .brand-panel,
             .form-panel {
-                padding: 28px;
+                padding: 26px;
             }
 
-            .feature-grid {
+            .brand-top,
+            .role-strip {
                 grid-template-columns: 1fr;
+            }
+
+            .brand-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .brand-copy h1 {
+                font-size: 38px;
+            }
+
+            .form-heading h2 {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
     <main class="login-shell">
-        <section class="hero-panel">
-            <div class="secure-pill">
-                <i class="bi bi-shield-fill-check"></i>
-                <span>Secure Access</span>
+        <section class="brand-panel">
+            <div class="brand-top">
+                <div class="brand-mark">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    AJAB
+                </div>
+                <div class="session-pill">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    Secure Access
+                </div>
             </div>
 
-            <div class="hero-copy">
-                <span class="kicker">School Management System</span>
-                <h1>Welcome back to your dashboard.</h1>
+            <div class="brand-copy">
+                <span>AJAB Student Record Management System</span>
+                <h1>Welcome back to AJAB.</h1>
                 <p>Sign in once and continue to the workspace assigned to your account role.</p>
 
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <i class="bi bi-shield-check"></i>
-                        <span>Admin controls</span>
-                    </div>
-                    <div class="feature-card">
-                        <i class="bi bi-person-video3"></i>
-                        <span>Teacher access</span>
-                    </div>
-                    <div class="feature-card">
-                        <i class="bi bi-mortarboard"></i>
-                        <span>Student profile</span>
-                    </div>
+                <div class="role-strip">
+                    <div><i class="bi bi-shield-check"></i>Admin controls</div>
+                    <div><i class="bi bi-person-video3"></i>Teacher access</div>
+                    <div><i class="bi bi-mortarboard"></i>Student profile</div>
                 </div>
             </div>
         </section>
 
         <section class="form-panel">
-            <i class="login-icon bi bi-person-lock"></i>
-            <h2>Log in</h2>
-            <p>Use your assigned username and password.</p>
-
-            @if(!empty($msg))
-                <div class="alert-error">{{ $msg }}</div>
-            @endif
-
-            <form action="/" method="POST">
-                @csrf
-
-                <div>
-                    <label for="username">Username</label>
-                    <div class="field">
-                        <i class="bi bi-person-fill"></i>
-                        <input id="username" type="text" name="username" value="{{ old('username') }}" placeholder="Enter username" autocomplete="username" required>
-                    </div>
+            <div class="form-card">
+                <div class="form-heading">
+                    <i class="bi bi-person-lock"></i>
+                    <h2>Log in</h2>
+                    <p>Use your assigned username and password.</p>
                 </div>
 
-                <div>
-                    <label for="password">Password</label>
-                    <div class="field">
-                        <i class="bi bi-lock-fill"></i>
-                        <input id="password" type="password" name="password" placeholder="Enter password" autocomplete="current-password" required>
+                @if(!empty($msg))
+                    <div class="alert-error">{{ $msg }}</div>
+                @endif
+
+                <form action="/" method="POST">
+                    @csrf
+
+                    <div>
+                        <label for="username">Username</label>
+                        <div class="field">
+                            <i class="bi bi-person-fill"></i>
+                            <input id="username" type="text" name="username" value="{{ old('username') }}" placeholder="Enter username" autocomplete="username" required>
+                        </div>
                     </div>
+
+                    <div>
+                        <label for="password">Password</label>
+                        <div class="field">
+                            <i class="bi bi-lock-fill"></i>
+                            <input id="password" type="password" name="password" placeholder="Enter password" autocomplete="current-password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        Open Dashboard
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="login-help">
+                    <i class="bi bi-info-circle-fill"></i>
+                    <span>Supported accounts include admin, teacher, and student roles.</span>
                 </div>
-
-                <button type="submit" class="login-btn">
-                    <span>Open Dashboard</span>
-                    <i class="bi bi-arrow-right"></i>
-                </button>
-            </form>
-
-            <div class="note">
-                <i class="bi bi-info-circle-fill"></i>
-                <span>Supported accounts include admin, teacher, and student roles.</span>
             </div>
         </section>
     </main>
